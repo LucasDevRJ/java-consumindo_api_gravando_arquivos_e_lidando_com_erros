@@ -1,7 +1,11 @@
 /**
  * 1. Crie uma classe Pessoa usando o conceito de Record em Java, com atributos como nome, idade e cidade.
- * Em seguida, implemente um programa que utiliza a biblioteca Gson para converter um JSON
- * representando uma pessoa em um objeto do tipo Pessoa.
+ *    Em seguida, implemente um programa que utiliza a biblioteca Gson para converter um JSON
+ *    representando uma pessoa em um objeto do tipo Pessoa.
+ *
+ * 3. Crie uma classe Livro que contenha atributos como título, autor e um objeto representando a editora. Em seguida,
+ *    implemente um programa que utiliza a biblioteca Gson para converter um JSON aninhado representando um livro
+ *    em um objeto do tipo Livro.
  */
 
 package desafios.desafio02;
@@ -28,5 +32,18 @@ public class Principal {
 
         System.out.println("---------------------------------------");
 
+        String jsonLivro = """
+          {
+            "titulo" : "O Hobbit",
+            "autor" : "J. R. R. Tolkien",
+            "editora" : {
+                "nome" : "HarperCollins"
+            }
+          }
+        """;
+
+        Livro livro = gson.fromJson(jsonLivro, Livro.class);
+
+        System.out.println(livro);
     }
 }
