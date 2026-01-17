@@ -3,6 +3,10 @@
  *    Em seguida, implemente um programa que utiliza a biblioteca Gson para converter um JSON
  *    representando uma pessoa em um objeto do tipo Pessoa.
  *
+ * 2. Modifique o programa do Exercício anterior para permitir a conversão de um JSON mesmo se alguns campos
+ *    estiverem ausentes ou se houver campos adicionais não representados no objeto Pessoa. Consulte a
+ *    documentação da biblioteca Gson para flexibilizar a conversão.
+ *
  * 3. Crie uma classe Livro que contenha atributos como título, autor e um objeto representando a editora. Em seguida,
  *    implemente um programa que utiliza a biblioteca Gson para converter um JSON aninhado representando um livro
  *    em um objeto do tipo Livro.
@@ -11,11 +15,10 @@
 package desafios.desafio02;
 
 import com.google.gson.Gson;
-
-import java.io.IOException;
+import com.google.gson.GsonBuilder;
 
 public class Principal {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         String json = """
           {
             "nome" : "Lucas",
@@ -24,8 +27,7 @@ public class Principal {
           }
         """;
 
-        Gson gson = new Gson();
-
+        Gson gson = new GsonBuilder().setLenient().create();
         Pessoa pessoa = gson.fromJson(json, Pessoa.class);
 
         System.out.println(pessoa);
