@@ -7,6 +7,7 @@ public class Principal {
         divisor.divide(4, 0);
         System.out.println("--------------------------");
         System.out.println("Desafio 2");
-
+        Usuario usuario = new Usuario();
+        usuario.logar("cama");
     }
 }
